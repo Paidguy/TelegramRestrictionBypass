@@ -35,6 +35,7 @@ class WorkerManager:
             Client: An available worker bot
         """
         if not self.worker_pool:
+            LOGGER(__name__).critical("Worker pool is empty! This should never happen.")
             raise RuntimeError("No workers available in the pool")
 
         if not self.worker_iterator:

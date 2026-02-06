@@ -27,8 +27,8 @@ def get_download_path(folder_id: int, filename: str, root_dir: str = "downloads"
             name = name[:-1]
             filename = name + ext
         else:
-            # If name is too short, just use a generic name
-            filename = f"file{ext}"
+            # If name is too short or ext is too long, use a safe generic name
+            filename = "file.bin"
             break
 
     folder = os.path.join(root_dir, str(folder_id))

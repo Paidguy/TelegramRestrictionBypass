@@ -288,7 +288,8 @@ class CommandHandlers:
             await self.user.join_chat(message.command[1])
             await message.reply("✅ Joined.")
         except Exception as e:
-            await message.reply(f"Error: {e}")
+            LOGGER(__name__).error(f"Failed to join chat: {e}")
+            await message.reply("❌ Failed to join. Check logs for details.")
 
     async def handle_channel_add(self, client: Client, event: ChatMemberUpdated):
         """Handle bot being added to a channel."""
@@ -338,7 +339,8 @@ class CommandHandlers:
             
             await message.reply("✅ Cleaned download directory.")
         except Exception as e:
-            await message.reply(f"Error: {e}")
+            LOGGER(__name__).error(f"Clean command failed: {e}")
+            await message.reply("❌ Failed to clean directory.")
 
     async def handle_single_download(self, bot: Client, message: Message):
         """Handle /dl command for single file download."""
@@ -360,6 +362,11 @@ class CommandHandlers:
                 self.track_task(self.safe_download(bot, message, msg, silent=False))
             else:
                 await message.reply("❌ Could not fetch message.")
+        except ValueError as e:
+            # URL parsing errors - safe to show to user
+            await message.reply(f"❌ Invalid URL: {str(e)}")
+            LOGGER(__name__).error(f"Single download URL error: {e}")
         except Exception as e:
-            await message.reply(f"Error: {e}")
+            # Other errors - don't expose details
             LOGGER(__name__).error(f"Single download error: {e}")
+            await message.reply("❌ Failed to download. Check logs for details.")

@@ -26,7 +26,7 @@ class PyroConf:
 
     # Validate bot token exists
     if not BOT_TOKENS or not BOT_TOKENS[0]:
-        raise ValueError("Error: BOT_TOKENS or BOT_TOKEN must be set.")
+        raise ValueError("BOT_TOKENS or BOT_TOKEN must be set.")
 
     SESSION_STRING: str = getenv("SESSION_STRING", "")
     BOT_START_TIME: float = time()

@@ -39,7 +39,8 @@ class ConfigManager:
             try:
                 with open(OWNER_FILE, "r") as f:
                     self.owner_id = int(f.read().strip())
-            except (ValueError, IOError) as e:
+            except (ValueError, IOError):
+                # File exists but is invalid, ignore silently
                 pass
 
     def set_owner(self, user_id: int) -> None:

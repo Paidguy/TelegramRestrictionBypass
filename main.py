@@ -152,6 +152,10 @@ async def safe_download(
         retry_count: Current retry count
         silent: Whether to show progress messages
     """
+    if worker_manager is None:
+        LOGGER(__name__).error("Worker manager not initialized")
+        return
+    
     worker_bot = worker_manager.get_next_worker()
     
     try:

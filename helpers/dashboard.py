@@ -40,7 +40,8 @@ class Dashboard:
         # Get memory usage
         try:
             mem = psutil.virtual_memory().percent
-        except (ImportError, AttributeError) as e:
+        except (ImportError, AttributeError):
+            LOGGER(__name__).debug("Could not get memory usage")
             mem = 0
 
         # Calculate active download slots
