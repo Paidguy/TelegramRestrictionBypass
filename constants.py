@@ -13,9 +13,9 @@ CHUNK_SIZE = 200
 MAX_RETRY_COUNT = 5
 FLOOD_WAIT_EXTRA_DELAY = 5
 
-# File size limits (2GB for non-premium, 4GB for premium)
-FILE_SIZE_LIMIT_REGULAR = 2097152000  # 2GB in bytes
-FILE_SIZE_LIMIT_PREMIUM = 2 * 2097152000  # 4GB in bytes
+# File size limits
+FILE_SIZE_LIMIT_REGULAR = 2147483648  # 2GB in bytes (2 * 1024^3)
+FILE_SIZE_LIMIT_PREMIUM = 4294967296  # 4GB in bytes (4 * 1024^3)
 
 # Client configuration
 MAIN_BOT_WORKERS = 10

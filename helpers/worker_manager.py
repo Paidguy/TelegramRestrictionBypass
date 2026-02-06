@@ -35,7 +35,7 @@ class WorkerManager:
             Client: An available worker bot
         """
         if not self.worker_pool:
-            return self.worker_pool[0]
+            raise RuntimeError("No workers available in the pool")
 
         if not self.worker_iterator:
             self.worker_iterator = itertools.cycle(self.worker_pool)
@@ -49,7 +49,7 @@ class WorkerManager:
             except StopIteration:
                 self.worker_iterator = itertools.cycle(self.worker_pool)
 
-        # Fallback to first worker
+        # Fallback to first worker if none are connected
         return self.worker_pool[0]
 
     async def start_new_worker(self, token: str, is_temp: bool = False) -> Optional[str]:

@@ -1,6 +1,7 @@
 """Dashboard UI and display functions."""
 
 import shutil
+import psutil
 from time import time
 from typing import List, Tuple
 
@@ -38,9 +39,8 @@ class Dashboard:
 
         # Get memory usage
         try:
-            import psutil
             mem = psutil.virtual_memory().percent
-        except Exception:
+        except (ImportError, AttributeError) as e:
             mem = 0
 
         # Calculate active download slots

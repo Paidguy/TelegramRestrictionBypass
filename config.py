@@ -20,12 +20,12 @@ class PyroConf:
     # Support multiple tokens, fallback to single BOT_TOKEN if list unset
     _tokens = getenv("BOT_TOKENS", "")
     BOT_TOKENS: List[str] = (
-        [t.strip() for t in _tokens.split(",")] if _tokens
-        else [getenv("BOT_TOKEN", "")]
+        [t.strip() for t in _tokens.split(",") if t.strip()] if _tokens
+        else ([getenv("BOT_TOKEN", "")] if getenv("BOT_TOKEN") else [])
     )
 
     # Validate bot token exists
-    if not BOT_TOKENS[0]:
+    if not BOT_TOKENS or not BOT_TOKENS[0]:
         raise ValueError("Error: BOT_TOKENS or BOT_TOKEN must be set.")
 
     SESSION_STRING: str = getenv("SESSION_STRING", "")

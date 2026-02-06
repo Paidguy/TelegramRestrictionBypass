@@ -442,7 +442,7 @@ async def initialize() -> None:
     
     await apply_smart_limits(DOWNLOAD_MODE_BOT)
 
-    # Initialize dashboard
+    # Initialize dashboard (download_semaphore is now set)
     dashboard = Dashboard(worker_manager, download_semaphore, RUNNING_TASKS)
 
     # Initialize handlers

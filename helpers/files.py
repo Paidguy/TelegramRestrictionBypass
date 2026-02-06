@@ -19,10 +19,17 @@ def get_download_path(folder_id: int, filename: str, root_dir: str = "downloads"
         str: Full path for the download
     """
     name, ext = os.path.splitext(filename)
+    
     # Truncate by bytes to avoid filesystem issues
+    # Keep removing characters until the byte length is within limits
     while len(filename.encode('utf-8')) > MAX_FILENAME_BYTES:
-        name = name[:-1]
-        filename = name + ext
+        if len(name) > 1:
+            name = name[:-1]
+            filename = name + ext
+        else:
+            # If name is too short, just use a generic name
+            filename = f"file{ext}"
+            break
 
     folder = os.path.join(root_dir, str(folder_id))
     os.makedirs(folder, exist_ok=True)

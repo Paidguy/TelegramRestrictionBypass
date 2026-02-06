@@ -325,8 +325,6 @@ class CommandHandlers:
             return
 
         try:
-            # Use subprocess instead of os.system for better safety
-            import shutil
             from constants import DOWNLOADS_DIR
             
             # Clean all files except state files
