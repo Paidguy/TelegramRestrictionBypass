@@ -1,16 +1,39 @@
-#
+"""Message parsing and extraction utilities."""
+
+from typing import Tuple, Optional
+
 from pyrogram.parser import Parser
 from pyrogram.utils import get_channel_id
 
 
-async def get_parsed_msg(text, entities):
+async def get_parsed_msg(text: str, entities) -> str:
+    """Parse message text with entities.
+    
+    Args:
+        text: Message text
+        entities: Message entities
+        
+    Returns:
+        str: Parsed message text
+    """
     return Parser.unparse(text, entities or [], is_html=False)
     
 
-def getChatMsgID(link: str):
+def getChatMsgID(link: str) -> Tuple[str, int]:
+    """Extract chat ID and message ID from a Telegram link.
+    
+    Args:
+        link: Telegram message link
+        
+    Returns:
+        Tuple[str, int]: chat_id and message_id
+        
+    Raises:
+        ValueError: If link format is invalid
+    """
     linkps = link.split("/")
     chat_id, message_thread_id, message_id = None, None, None
-    
+
     try:
         if len(linkps) == 7 and linkps[3] == "c":
             chat_id = get_channel_id(int(linkps[4]))
@@ -29,8 +52,8 @@ def getChatMsgID(link: str):
             if chat_id == "m":
                 raise ValueError("Invalid ClientType used to parse this message link")
             message_id = int(linkps[4])
-    except (ValueError, TypeError):
-        raise ValueError("Invalid post URL. Must end with a numeric ID.")
+    except (ValueError, TypeError) as e:
+        raise ValueError(f"Invalid post URL. Must end with a numeric ID: {e}")
 
     if not chat_id or not message_id:
         raise ValueError("Please send a valid Telegram post URL.")
@@ -39,8 +62,16 @@ def getChatMsgID(link: str):
 
 
 def get_file_name(message_id: int, chat_message) -> str:
+    """Extract or generate filename from a message.
+    
+    Args:
+        message_id: ID of the message
+        chat_message: The message object
+        
+    Returns:
+        str: Filename for the media
+    """
     if chat_message.document:
-        # Fix: fallback if file_name is None
         return chat_message.document.file_name or f"{message_id}.file"
     elif chat_message.video:
         return chat_message.video.file_name or f"{message_id}.mp4"
