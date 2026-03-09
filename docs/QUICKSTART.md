@@ -2,64 +2,24 @@
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,14,16&height=100&section=header&text=Quick%20Start%20Guide&fontSize=40&fontColor=fff&animation=twinkling&fontAlignY=50" width="100%"/>
+**Follow this checklist to get TelegramRestrictionBypass running in ~25 minutes.**
 
-<br/>
-
-🚀
-
-<br/>
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=00B4D8&center=true&vCenter=true&width=500&lines=Want+to+get+started+FAST%3F;Follow+this+checklist!;⏱️+Total+Time:+~25+minutes" alt="Quick Start Animation" />
-
-<br/>
-
-**Follow this checklist, then see [SETUP.md](SETUP.md) for details.**
+See [SETUP.md](SETUP.md) for step-by-step details.
 
 </div>
 
 ---
 
-<div align="center">
+## 📋 Progress Overview
 
-## 📋 Progress Tracker
-
-<table>
-<tr>
-<td align="center" width="16.66%">
-💻
-<br/><b>Prerequisites</b>
-<br/><sub>5 min</sub>
-</td>
-<td align="center" width="16.66%">
-🔑
-<br/><b>Credentials</b>
-<br/><sub>10 min</sub>
-</td>
-<td align="center" width="16.66%">
-📦
-<br/><b>Install</b>
-<br/><sub>5 min</sub>
-</td>
-<td align="center" width="16.66%">
-⚙️
-<br/><b>Configure</b>
-<br/><sub>2 min</sub>
-</td>
-<td align="center" width="16.66%">
-🚀
-<br/><b>Run</b>
-<br/><sub>1 min</sub>
-</td>
-<td align="center" width="16.66%">
-🎉
-<br/><b>Test</b>
-<br/><sub>2 min</sub>
-</td>
-</tr>
-</table>
-
-</div>
+| Step | Task | Time |
+|------|------|------|
+| 1️⃣ | Prerequisites | 5 min |
+| 2️⃣ | Get Credentials | 10 min |
+| 3️⃣ | Install | 5 min |
+| 4️⃣ | Configure | 2 min |
+| 5️⃣ | Run | 1 min |
+| 6️⃣ | Test | 2 min |
 
 ---
 
@@ -72,40 +32,41 @@
 python3 --version
 
 # Install if needed (Ubuntu/Debian)
-sudo apt update && sudo apt install python3.11 python3.11-venv python3-pip git -y
+sudo apt update && sudo apt install python3.11 python3.11-venv python3-pip git ffmpeg -y
+
+# macOS (Homebrew)
+# brew install python@3.11 git ffmpeg
 ```
 
 ---
 
 ### 2️⃣ Get Credentials (10 minutes)
 
-**API Credentials:**
-1. Go to https://my.telegram.org
-2. Login with your phone number
-3. Click "API development tools"
-4. Create app → Copy `api_id` and `api_hash`
+**API Credentials (Required):**
+1. Go to https://my.telegram.org and log in
+2. Click "API development tools"
+3. Create app → Copy `api_id` (number) and `api_hash` (hex string)
 
-**Bot Token:**
+**Bot Token (Required):**
 1. Open Telegram → Find @BotFather
-2. Send `/newbot`
-3. Follow prompts → Copy token
+2. Send `/newbot` → Follow prompts → Copy token
 
-**Session String (optional):**
-- Skip if only downloading public content
-- See [SETUP.md - Step 3](SETUP.md#step-3-get-session_string-optional---for-user-mode) for generating
+**Session String (Optional — for USER mode only):**
+- Skip if only downloading from public channels
+- See [SETUP.md — Step 3](SETUP.md#step-3-get-session_string-optional---for-user-mode) for how to generate
 
 ---
 
 ### 3️⃣ Install (5 minutes)
 
 ```bash
-# Clone
+# Clone repository
 git clone https://github.com/Paidguy/TelegramRestrictionBypass.git
 cd TelegramRestrictionBypass
 
-# Setup environment
+# Set up virtual environment
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install --upgrade pip
@@ -117,16 +78,19 @@ pip install -r requirements.txt
 ### 4️⃣ Configure (2 minutes)
 
 ```bash
-# Edit config
+# Copy the example config
+cp config.env.example config.env
+
+# Edit with your credentials
 nano config.env
 ```
 
-**Replace these values:**
+**Fill in these values:**
 ```env
 API_ID=12345678                                   # ← Your numeric API ID
 API_HASH=abc123def456...                          # ← Your API hash
 BOT_TOKENS=1234567890:ABCdef...                   # ← Your bot token
-SESSION_STRING=BQAx...                            # ← Your session (or leave empty)
+SESSION_STRING=BQAx...                            # ← Optional session string (or leave empty)
 ```
 
 **Save:** `Ctrl+X` → `Y` → `Enter`
@@ -136,7 +100,6 @@ SESSION_STRING=BQAx...                            # ← Your session (or leave e
 ### 5️⃣ Run (1 minute)
 
 ```bash
-# Start the bot
 python3 main.py
 ```
 
@@ -145,6 +108,7 @@ python3 main.py
 [INFO] - System Starting...
 [INFO] - Starting User Session...
 [INFO] - Initializing Bots...
+[INFO] - Starting Main Bot...
 ```
 
 ---
@@ -152,96 +116,64 @@ python3 main.py
 ### 6️⃣ Test (2 minutes)
 
 1. Open Telegram
-2. Find your bot (search for the username you created)
+2. Find your bot (search for the username you created with BotFather)
 3. Send `/start`
-4. You should see the dashboard! 🎉
+4. You should see the live dashboard! 🎉
 
-**Test download:**
+**Test a download:**
 ```
 /dl https://t.me/durov/123
 ```
 
 ---
 
-## 🎯 Total Time: ~25 minutes
+## ❌ Common Issues
 
-## ❌ Having Issues?
+### `API_ID must be a numeric value`
+→ Edit `config.env` — API_ID should be a plain number, no quotes
 
-### "API_ID must be a numeric value"
-→ Edit `config.env` and remove quotes/placeholder text
+### `ModuleNotFoundError`
+→ Make sure venv is activated, then run: `pip install -r requirements.txt`
 
-### "ModuleNotFoundError"
-→ Run: `pip install -r requirements.txt`
+### `BOT_TOKENS must be set`
+→ Paste your actual bot token (not the placeholder) in `config.env`
 
-### "BOT_TOKENS must be set"
-→ Make sure you pasted the actual bot token in config.env
+### `API_HASH is not configured`
+→ Replace `YOUR_API_HASH_HERE` with your real API hash
 
 ### Bot doesn't respond
-→ Make sure you clicked START in Telegram first
+→ Send `/start` first; all commands work in **private chat only**
 
 ---
 
-## 📖 Need More Help?
+## �� Need More Help?
 
 - **Detailed instructions:** [SETUP.md](SETUP.md)
 - **Full documentation:** [README.md](README.md)
-- **Troubleshooting:** [README.md#troubleshooting](README.md#️-troubleshooting)
+- **Troubleshooting:** [INSTALLATION.md#troubleshooting](INSTALLATION.md#-troubleshooting)
 - **Report bugs:** [GitHub Issues](https://github.com/Paidguy/TelegramRestrictionBypass/issues)
 
 ---
 
 ## 🚀 What's Next?
 
-<div align="center">
+Once your bot is running, explore these features:
 
-<table>
-<tr>
-<td align="center" width="25%">
-🤖
-<br/><b>Add More Bots</b>
-<br/><code>/connect &lt;token&gt;</code>
-<br/><sub>Faster parallel uploads</sub>
-</td>
-<td align="center" width="25%">
-📺
-<br/><b>Dump Channel</b>
-<br/>Add bot as admin
-<br/><sub>Auto-forward to channel</sub>
-</td>
-<td align="center" width="25%">
-📁
-<br/><b>Batch Download</b>
-<br/><code>/bdl &lt;start&gt; &lt;end&gt;</code>
-<br/><sub>Download thousands</sub>
-</td>
-<td align="center" width="25%">
-⚙️
-<br/><b>Settings</b>
-<br/>Click ⚙️ in dashboard
-<br/><sub>Tune performance</sub>
-</td>
-</tr>
-</table>
-
-</div>
+| Feature | How to Use |
+|---------|-----------|
+| **Clone a channel** | `/clone https://t.me/channel/any_message` |
+| **Batch download** | `/bdl <start_link> <end_link>` |
+| **Add worker bots** | `/connect <token>` (faster parallel uploads) |
+| **Set dump channel** | Add bot as admin to a channel — auto-detected |
+| **Switch to USER mode** | Dashboard → Toggle Mode button |
+| **Strict file ordering** | Dashboard → Toggle Order button |
+| **View source history** | Dashboard → 📥 Sources button |
 
 ---
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,11,20&height=4&section=footer" width="100%"/>
-
-<br/>
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&duration=3000&pause=1000&color=22C55E&center=true&vCenter=true&width=600&lines=✅+Quick+Setup+Complete!;🎉+Happy+downloading!;⭐+Don't+forget+to+star+the+repo!" alt="Success Animation" />
-
-<br/>
-
-**Happy downloading! 📥**
-
-<br/>
-
-[![Back to Main Docs](https://img.shields.io/badge/📖_Back_to-Main_Documentation-0088cc?style=for-the-badge&logo=readthedocs&logoColor=white)](README.md)
+[![Back to Main Docs](https://img.shields.io/badge/📖_Back_to-Main_README-0088cc?style=for-the-badge&logo=readthedocs&logoColor=white)](../README.md)
 [![Full Setup Guide](https://img.shields.io/badge/📚_Read-Full_Setup_Guide-22c55e?style=for-the-badge&logo=bookstack&logoColor=white)](SETUP.md)
 
 </div>

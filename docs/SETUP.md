@@ -345,6 +345,7 @@ Let's verify everything is working!
 ━━━━━━━━━━━━━━━━━━━━━
 📂 Destination: Private Chat
 🛠 Current Mode: BOT
+📦 Task Ordering: ✅ Strict (Perfect Order)
 ```
 
 ### Step 3: Test a Simple Download
@@ -363,13 +364,18 @@ The bot should:
 3. Re-upload it to you
 4. Show "✅ Completed" when done
 
-### Step 4: Check Commands
+### Step 4: Explore the Dashboard
 
-Send `/start` again and explore the dashboard buttons:
-- **🔄 Refresh** - Updates stats
-- **⚙️ Settings** - Change download speed and delays
+Send `/start` and explore the dashboard buttons:
+- **🔄 Refresh** - Updates all stats in real-time
+- **⚙️ Settings** - Change download speed and flood delay
 - **🤖 Manage Bots** - Add/remove worker bots
-- **📜 Logs** - View error logs
+- **👤/🤖 Toggle Mode** - Switch between BOT and USER modes
+- **🛡️/🚀 Toggle Order** - Switch between strict sequential and concurrent batch mode
+- **📂 Destination** - Set or clear the dump channel
+- **📥 Sources** - View recently used source channels
+- **📜 Logs** - Download the log file
+- **🛑 STOP ALL** - Cancel all running downloads
 
 ---
 
@@ -474,11 +480,13 @@ Then restart the bot.
 
 Now that your bot is running:
 
-1. **Test downloads:** Try `/dl` with various public channel links
-2. **Test batch downloads:** Use `/bdl` to download multiple messages
-3. **Add worker bots:** Use `/connect` to add more bots for faster downloads
-4. **Set up dump channel:** Create a channel and add your bot as admin
-5. **Read the full documentation:** Check README.md for advanced features
+1. **Test a single download:** `/dl https://t.me/durov/123`
+2. **Test batch download:** `/bdl <start_link> <end_link>`
+3. **Clone a whole channel:** `/clone https://t.me/channel/any_message`
+4. **Add worker bots:** `/connect <token>` for faster parallel uploads
+5. **Set up dump channel:** Add your bot as admin to a Telegram channel (auto-detected)
+6. **Switch to USER mode:** Use the dashboard toggle to access restricted channels
+7. **Enable strict ordering:** Use the Toggle Order button to ensure perfect file order
 
 ---
 
@@ -486,8 +494,8 @@ Now that your bot is running:
 
 - **Full Documentation:** [README.md](README.md)
 - **Commands Reference:** [README.md#commands-reference](README.md#-commands-reference)
-- **Troubleshooting:** [README.md#troubleshooting](README.md#️-troubleshooting)
-- **Docker Setup:** [README.md#docker-compose](README.md#method-2--docker-compose)
+- **Troubleshooting:** [INSTALLATION.md#troubleshooting](INSTALLATION.md#-troubleshooting)
+- **Docker Setup:** [DOCKER.md](DOCKER.md)
 - **Report Issues:** [GitHub Issues](https://github.com/Paidguy/TelegramRestrictionBypass/issues)
 
 ---

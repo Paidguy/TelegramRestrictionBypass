@@ -485,10 +485,12 @@ docker compose logs -f
 ### 2. Check Logs
 You should see:
 ```
+[INFO] - System Starting...
 [INFO] - Starting User Session...
 [INFO] - Initializing Bots...
 [INFO] - Worker Added: BotName (123456789)
-[INFO] - System Starting...
+[INFO] - Starting Main Bot...
+[INFO] - Checking for interrupted batches...
 ```
 
 ### 3. Test in Telegram
@@ -499,6 +501,8 @@ You should see:
    - ✅ Worker bot count
    - ✅ System uptime
    - ✅ Storage and RAM stats
+   - ✅ Current mode (BOT or USER)
+   - ✅ Task ordering status
 
 ### 4. Test Download
 ```
@@ -506,6 +510,15 @@ You should see:
 ```
 
 If you get a response, congratulations! 🎉 Installation successful!
+
+**Other commands to try:**
+```
+# Clone an entire channel
+/clone https://t.me/channel/any_message
+
+# Batch download a range
+/bdl https://t.me/c/1234567890/100 https://t.me/c/1234567890/500
+```
 
 ---
 
@@ -593,7 +606,14 @@ If you encounter issues not covered here:
 1. 📖 Read the [Full Documentation](README.md)
 2. 🚀 Check the [Quick Start Guide](QUICKSTART.md)
 3. ⚙️ Learn about [Configuration Options](SETUP.md)
-4. 🤝 Review [Contributing Guidelines](../CONTRIBUTING.md)
+4. 🐳 Set up [Docker for production](DOCKER.md)
+5. 🤝 Review [Contributing Guidelines](../CONTRIBUTING.md)
+
+**Key features to try:**
+- `/clone <link>` — Clone an entire channel automatically
+- `/bdl <start> <end>` — Batch download a message range
+- Dashboard → Toggle Order — Switch between strict and concurrent batch mode
+- Dashboard → 📥 Sources — View your source channel history
 
 ---
 
