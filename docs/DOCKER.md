@@ -645,7 +645,7 @@ du -sh $(docker inspect --format='{{.LogPath}}' telegram_bot)
 ### Project Documentation
 - [Installation Guide](INSTALLATION.md)
 - [Configuration Guide](SETUP.md)
-- [Full Documentation](README.md)
+- [Full Documentation](../README.md)
 
 ---
 
@@ -694,4 +694,4 @@ FROM python:3.11-slim  # Official Python image
 
 **Ready for production! 🚀**
 
-For issues, see [Troubleshooting](README.md#troubleshooting) or [open an issue](https://github.com/Paidguy/TelegramRestrictionBypass/issues).
+For issues, see [INSTALLATION.md troubleshooting](INSTALLATION.md#-troubleshooting) or [open an issue](https://github.com/Paidguy/TelegramRestrictionBypass/issues).

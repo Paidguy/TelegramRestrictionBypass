@@ -484,10 +484,10 @@ Now that your bot is running:
 
 ## 📚 Additional Resources
 
-- **Full Documentation:** [README.md](README.md)
-- **Commands Reference:** [README.md#commands-reference](README.md#-commands-reference)
-- **Troubleshooting:** [README.md#troubleshooting](README.md#️-troubleshooting)
-- **Docker Setup:** [README.md#docker-compose](README.md#method-2--docker-compose)
+- **Full Documentation:** [../README.md](../README.md)
+- **Commands and Examples:** [EXAMPLES.md](EXAMPLES.md)
+- **Troubleshooting:** [INSTALLATION.md#-troubleshooting](INSTALLATION.md#-troubleshooting)
+- **Docker Setup:** [DOCKER.md](DOCKER.md)
 - **Report Issues:** [GitHub Issues](https://github.com/Paidguy/TelegramRestrictionBypass/issues)
 
 ---
@@ -507,7 +507,7 @@ Now that your bot is running:
 
 If you've followed all steps and your bot responds to `/start`, you're done! 🎉
 
-For advanced configuration, worker pools, and production deployment, see the main [README.md](README.md).
+For advanced configuration, worker pools, and production deployment, see the main [../README.md](../README.md).
 
 **Need help?** Open an issue on GitHub with:
 - Your error message (remove any credentials!)

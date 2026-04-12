@@ -590,7 +590,7 @@ If you encounter issues not covered here:
 
 ✅ Installation complete! Now:
 
-1. 📖 Read the [Full Documentation](README.md)
+1. 📖 Read the [Full Documentation](../README.md)
 2. 🚀 Check the [Quick Start Guide](QUICKSTART.md)
 3. ⚙️ Learn about [Configuration Options](SETUP.md)
 4. 🤝 Review [Contributing Guidelines](../CONTRIBUTING.md)
@@ -609,4 +609,4 @@ If you encounter issues not covered here:
 
 **Happy Downloading! 🚀**
 
-For questions or support, check the [main README](README.md) or open an [issue](https://github.com/Paidguy/TelegramRestrictionBypass/issues).
+For questions or support, check the [main README](../README.md) or open an [issue](https://github.com/Paidguy/TelegramRestrictionBypass/issues).

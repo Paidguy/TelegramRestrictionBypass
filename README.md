@@ -1,51 +1,92 @@
+<div align="center">
+
 # TelegramRestrictionBypass
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue)
-[![Repo Stars](https://img.shields.io/github/stars/Paidguy/TelegramRestrictionBypass?style=social)](https://github.com/Paidguy/TelegramRestrictionBypass/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/Paidguy/TelegramRestrictionBypass)](https://github.com/Paidguy/TelegramRestrictionBypass/commits/main)
-![CI](https://img.shields.io/badge/CI-Not%20Configured-lightgrey)
+**Download, clone, and re-upload restricted Telegram content with production-grade reliability.**
 
-TelegramRestrictionBypass is a Python Telegram automation bot that copies content from Telegram message links, including content that cannot be forwarded directly. It works by fetching media and re-uploading it through your bot workers, or through your user session when bot access is not enough.
+[![Stars](https://img.shields.io/github/stars/Paidguy/TelegramRestrictionBypass?style=for-the-badge)](https://github.com/Paidguy/TelegramRestrictionBypass/stargazers)
+[![Forks](https://img.shields.io/github/forks/Paidguy/TelegramRestrictionBypass?style=for-the-badge)](https://github.com/Paidguy/TelegramRestrictionBypass/network/members)
+[![License](https://img.shields.io/github/license/Paidguy/TelegramRestrictionBypass?style=for-the-badge)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Docker](https://img.shields.io/badge/Docker-Optional-2496ED?style=for-the-badge&logo=docker&logoColor=white)](docs/DOCKER.md)
 
-This project exists for users who need reliable Telegram media archiving and transfer workflows at scale: channel operators, backup and migration workflows, researchers, and automation-focused developers. It is built for long runs, with crash-safe resume, worker-bot pooling, and runtime controls from an inline dashboard.
-
-Keywords: Telegram restricted content downloader, Telegram media backup bot, Telegram channel cloning, Pyrogram automation, Telegram batch media transfer.
+</div>
 
 ---
 
-## Key Features
+## What This Project Is
 
-- Restricted-content bypass via download and re-upload workflow
-- Dual fetch modes:
-  - BOT mode for bot-accessible chats
-  - USER mode for private or restricted chats using SESSION_STRING
-- Single, batch, and full-channel clone commands
-- Multi-bot worker pool with round-robin distribution
-- Crash-safe auto-resume for interrupted batch and single downloads
-- Strict ordered processing mode and concurrent fast mode
-- Media group (album) handling
-- Destination channel support (dump channel)
-- Source channel history tracking
-- Runtime dashboard for mode switching, settings, logs, and task control
+TelegramRestrictionBypass is a Python Telegram automation bot that can fetch and re-upload media from Telegram links, including content that cannot be forwarded directly. It supports both bot-based and user-session-based retrieval, so you can handle public, private, and restricted workflows from one tool.
 
-## Who This Is For
+---
 
-- Telegram power users moving or backing up media
-- Admins cloning or archiving channels over time
-- Developers who want a production-ready Telegram download pipeline they can extend
+## Why It Exists
 
-## Installation
+- **Forward restrictions block normal workflows** for backup and migration
+- **Large media archives need reliability** with resume-safe processing
+- **Power users need scale** through multi-bot workers and runtime controls
+- **Developers need extensibility** in a clear Python codebase
 
-### Prerequisites
+It is designed for developers, channel admins, and power users who need dependable media backup, migration, and archival pipelines with worker scaling and operational safety.
+
+---
+
+## ✨ Features
+
+- **Restricted-content bypass** using download and re-upload flow
+- **Dual modes**:
+  - **BOT mode** for bot-accessible chats
+  - **USER mode** for restricted/private access with `SESSION_STRING`
+- **Single, batch, and full clone commands**: `/dl`, `/bdl`, `/clone`
+- **Multi-bot worker pool** with round-robin upload distribution
+- **Crash-safe auto-resume** for interrupted single and batch tasks
+- **Strict order mode** or **concurrent fast mode**
+- **Media group support** for Telegram albums
+- **Destination channel support** (dump channel)
+- **Source history tracking** and runtime dashboard controls
+
+---
+
+## 🎬 Demo / Preview
+
+Runtime experience is centered around an interactive Telegram dashboard and command-driven flow:
+
+```text
+/start  -> opens dashboard
+/dl     -> single message download/re-upload
+/bdl    -> range batch processing with progress
+/clone  -> full channel clone from any message link
+```
+
+Detailed command workflows and scenarios: [docs/EXAMPLES.md](docs/EXAMPLES.md)
+
+---
+
+## 🛠 Tech Stack
 
 - Python 3.11+
+- Pyrofork (Pyrogram fork)
+- TgCrypto
+- Pyleaves
+- python-dotenv
+- psutil
+- Pillow
 - FFmpeg
-- Telegram API credentials from https://my.telegram.org
-- At least one bot token from @BotFather
-- Optional: SESSION_STRING for USER mode
+- Docker / Docker Compose (optional)
 
-### Quick Setup
+---
+
+## 🚀 Installation & Setup
+
+### 1. Prerequisites
+
+- Python `3.11+`
+- FFmpeg
+- Telegram API credentials from [my.telegram.org](https://my.telegram.org)
+- At least one bot token from [@BotFather](https://t.me/BotFather)
+- Optional: `SESSION_STRING` for USER mode
+
+### 2. Setup
 
 ```bash
 git clone https://github.com/Paidguy/TelegramRestrictionBypass.git
@@ -57,32 +98,36 @@ pip install -r requirements.txt
 cp config.env.example config.env
 ```
 
-If venv creation fails on Debian/Ubuntu, install the venv package first:
+If `venv` creation fails on Debian/Ubuntu:
 
 ```bash
 sudo apt install -y python3-venv
 ```
 
-Edit config.env and set at minimum:
+### 3. Configure
 
-- API_ID
-- API_HASH
-- BOT_TOKENS
-- SESSION_STRING (optional, required for USER mode)
+Set these in `config.env`:
 
-Then run:
+- `API_ID`
+- `API_HASH`
+- `BOT_TOKENS`
+- `SESSION_STRING` (optional, required for USER mode)
+
+### 4. Run
 
 ```bash
 python main.py
 ```
 
-For complete platform-specific setup steps, see [docs/INSTALLATION.md](docs/INSTALLATION.md) and [docs/SETUP.md](docs/SETUP.md).
+Detailed guides: [docs/INSTALLATION.md](docs/INSTALLATION.md), [docs/SETUP.md](docs/SETUP.md)
 
-## Usage
+---
+
+## 🧪 Usage
 
 1. Open your bot in Telegram
-2. Send /start
-3. Use commands below
+2. Send `/start`
+3. Run commands
 
 ### Core Commands
 
@@ -92,7 +137,7 @@ For complete platform-specific setup steps, see [docs/INSTALLATION.md](docs/INST
 /clone <any_message_link_from_target_channel>
 ```
 
-### Management Commands
+### Admin and Management Commands
 
 ```text
 /connect <bot_token>        # add worker bot at runtime
@@ -102,7 +147,7 @@ For complete platform-specific setup steps, see [docs/INSTALLATION.md](docs/INST
 /join <invite_or_username>  # USER mode: join target chat first
 ```
 
-### Typical Examples
+### Real Examples
 
 ```text
 /dl https://t.me/durov/123
@@ -110,79 +155,92 @@ For complete platform-specific setup steps, see [docs/INSTALLATION.md](docs/INST
 /clone https://t.me/c/123456789/250
 ```
 
-For practical workflows, see docs/EXAMPLES.md.
+More practical workflows: [docs/EXAMPLES.md](docs/EXAMPLES.md)
 
 ---
 
-## Configuration
+## 📁 Project Structure
 
-Project configuration is loaded from config.env by config.py.
-
-Key variables:
-
-- API_ID
-- API_HASH
-- BOT_TOKENS (comma-separated for worker pool)
-- SESSION_STRING
-- MAX_CONCURRENT_DOWNLOADS
-- FLOOD_WAIT_DELAY
-- BATCH_SIZE
-
-Detailed reference: docs/CONFIGURATION.md.
-
-## Architecture
-
-At runtime, the main bot handles commands and control, while worker bots (and optional user session) fetch and upload media. State and settings are persisted under downloads for crash recovery.
-
-Architecture reference: docs/ARCHITECTURE.md.
-
-## Tech Stack
-
-- Python 3.11
-- Pyrofork (Pyrogram fork)
-- TgCrypto
-- Pyleaves
-- python-dotenv
-- psutil
-- Pillow
-- FFmpeg
-- Docker and Docker Compose (optional deployment)
+```text
+TelegramRestrictionBypass/
+├── main.py
+├── config.py
+├── logger.py
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── docs/
+│   ├── README.md
+│   ├── ARCHITECTURE.md
+│   ├── CONFIGURATION.md
+│   ├── EXAMPLES.md
+│   ├── INSTALLATION.md
+│   ├── SETUP.md
+│   ├── QUICKSTART.md
+│   ├── DOCKER.md
+│   └── DEPENDENCIES.md
+└── helpers/
+  ├── files.py
+  ├── msg.py
+  ├── settings.py
+  ├── state.py
+  └── utils.py
+```
 
 ---
 
-## Credits and Attribution
+## 📚 Documentation
+
+- [docs/README.md](docs/README.md)
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [docs/CONFIGURATION.md](docs/CONFIGURATION.md)
+- [docs/EXAMPLES.md](docs/EXAMPLES.md)
+- [docs/INSTALLATION.md](docs/INSTALLATION.md)
+- [docs/DOCKER.md](docs/DOCKER.md)
+
+---
+
+## ⚙️ Configuration Snapshot
+
+Primary runtime variables:
+
+- `API_ID`, `API_HASH`
+- `BOT_TOKENS` (comma-separated worker tokens)
+- `SESSION_STRING`
+- `MAX_CONCURRENT_DOWNLOADS`
+- `FLOOD_WAIT_DELAY`
+- `BATCH_SIZE`
+
+Full reference: [docs/CONFIGURATION.md](docs/CONFIGURATION.md)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Run formatting/lint checks
+4. Open a clear pull request with context and test notes
+
+Contribution guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+
+---
+
+## 🙌 Credits and Attribution
 
 - Maintained by [Paidguy](https://github.com/Paidguy)
 - Based on concepts and earlier work from [RestrictedContentDL](https://github.com/bisnuray/RestrictedContentDL) by [bisnuray](https://github.com/bisnuray)
 
 Attribution and licensing are preserved per project history and MIT terms.
 
-## Contributing
+---
 
-Contributions are welcome.
+## 📄 License
 
-1. Fork the repository
-2. Create a branch for your change
-3. Run formatting/lint tools from the Makefile
-4. Open a pull request with clear context and test notes
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
 
-See CONTRIBUTING.md for full contribution standards and PR expectations.
-
-## Documentation
-
-- docs/README.md
-- docs/ARCHITECTURE.md
-- docs/CONFIGURATION.md
-- docs/EXAMPLES.md
-- docs/INSTALLATION.md
-- docs/DOCKER.md
-
-See [docs/README.md](docs/README.md) for the full documentation index.
-
-## License
-
-This project is licensed under the MIT License. See LICENSE.
-
-## Disclaimer
+## Legal Notice
 
 You are responsible for how you use this software. Always comply with Telegram Terms of Service, copyright law, and local regulations.

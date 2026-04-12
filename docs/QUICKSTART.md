@@ -92,7 +92,7 @@ sudo apt update && sudo apt install python3.11 python3.11-venv python3-pip git -
 
 **Session String (optional):**
 - Skip if only downloading public content
-- See [SETUP.md - Step 3](SETUP.md#step-3-get-session_string-optional---for-user-mode) for generating
+- See [SETUP.md](SETUP.md) for full session string generation steps
 
 ---
 
@@ -184,8 +184,8 @@ python3 main.py
 ## 📖 Need More Help?
 
 - **Detailed instructions:** [SETUP.md](SETUP.md)
-- **Full documentation:** [README.md](README.md)
-- **Troubleshooting:** [README.md#troubleshooting](README.md#️-troubleshooting)
+- **Full documentation:** [../README.md](../README.md)
+- **Troubleshooting:** [INSTALLATION.md#-troubleshooting](INSTALLATION.md#-troubleshooting)
 - **Report bugs:** [GitHub Issues](https://github.com/Paidguy/TelegramRestrictionBypass/issues)
 
 ---
@@ -241,7 +241,7 @@ python3 main.py
 
 <br/>
 
-[![Back to Main Docs](https://img.shields.io/badge/📖_Back_to-Main_Documentation-0088cc?style=for-the-badge&logo=readthedocs&logoColor=white)](README.md)
+[![Back to Main Docs](https://img.shields.io/badge/📖_Back_to-Main_Documentation-0088cc?style=for-the-badge&logo=readthedocs&logoColor=white)](../README.md)
 [![Full Setup Guide](https://img.shields.io/badge/📚_Read-Full_Setup_Guide-22c55e?style=for-the-badge&logo=bookstack&logoColor=white)](SETUP.md)
 
 </div>
