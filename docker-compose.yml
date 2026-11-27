@@ -3,9 +3,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - config.env
     environment:
       - TZ=Asia/Dhaka
     restart: always
-    network_mode: "host"  # <--- ADD THIS LINE HERE
+    network_mode: "host"
     volumes:
       - .:/app

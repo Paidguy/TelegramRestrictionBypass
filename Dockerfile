@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.13-slim
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get upgrade -y && \
 # Set timezone (use Asia/Kolkata if needed)
 ENV TZ=Asia/Dhaka
 
-RUN pip install --no-cache-dir -U pip wheel==0.45.1
+RUN pip install --no-cache-dir --upgrade pip wheel
 
 WORKDIR /app
 COPY requirements.txt /app

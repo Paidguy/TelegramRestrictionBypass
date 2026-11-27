@@ -7,7 +7,7 @@ Production-grade Telegram content downloader and re-uploader with:
 - Dual BOT/USER download modes
 - Live admin dashboard with real-time statistics
 
-Copyright (C) 2025 Paidguy
+Copyright (C) 2026 Paidguy
 License: MIT
 """
 
