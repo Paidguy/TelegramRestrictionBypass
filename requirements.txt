@@ -1,6 +1,6 @@
-Pyrofork
-TgCrypto
-Pyleaves
-python-dotenv
-psutil
-pillow
+Pyrofork==2.3.69
+TgCrypto==1.2.5
+Pyleaves==1.0.2
+python-dotenv==1.2.4
+psutil==7.2.2
+pillow==13.0.0

@@ -84,7 +84,7 @@ All Python packages listed in `requirements.txt`.
 
 #### 1. **Pyrofork** (Telegram Client)
 ```python
-Pyrofork
+Pyrofork==2.3.69
 ```
 - **Purpose:** Modern Telegram MTProto API client library (maintained fork of Pyrogram)
 - **Used For:**
@@ -97,7 +97,7 @@ Pyrofork
 
 #### 2. **TgCrypto** (Cryptography Acceleration)
 ```python
-TgCrypto
+TgCrypto==1.2.5
 ```
 - **Purpose:** C-extension providing AES-256-IGE encryption/decryption
 - **Used For:**
@@ -109,7 +109,7 @@ TgCrypto
 
 #### 3. **Pyleaves** (Progress Bars)
 ```python
-Pyleaves
+Pyleaves==1.0.2
 ```
 - **Purpose:** Beautiful progress bars for file operations
 - **Used For:**
@@ -120,7 +120,7 @@ Pyleaves
 
 #### 4. **python-dotenv** (Configuration)
 ```python
-python-dotenv
+python-dotenv==1.2.4
 ```
 - **Purpose:** Load environment variables from `.env` files
 - **Used For:**
@@ -131,7 +131,7 @@ python-dotenv
 
 #### 5. **psutil** (System Monitoring)
 ```python
-psutil
+psutil==7.2.2
 ```
 - **Purpose:** Cross-platform system and process utilities
 - **Used For:**
@@ -144,7 +144,7 @@ psutil
 
 #### 6. **Pillow** (Image Processing)
 ```python
-pillow
+pillow==13.0.0
 ```
 - **Purpose:** Python Imaging Library (PIL Fork)
 - **Used For:**
@@ -156,12 +156,12 @@ pillow
 
 ### Complete requirements.txt
 ```txt
-Pyrofork
-TgCrypto
-Pyleaves
-python-dotenv
-psutil
-pillow
+Pyrofork==2.3.69
+TgCrypto==1.2.5
+Pyleaves==1.0.2
+python-dotenv==1.2.4
+psutil==7.2.2
+pillow==13.0.0
 ```
 
 ---
